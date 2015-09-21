@@ -14,8 +14,13 @@ namespace DomainModel
             Producto word = Producto.nuevoProcesadorTexto("Procesador Word");
             Producto hojaCalculo = Producto.nuevaHojaCalculo("Excel");
             Producto baseDatos = Producto.nuevaBaseDatos("SQL Server");
-            Contrato contrato = new Contrato(word, 10, DateTime.Today);
+            Contrato contrato = new Contrato(word, 10.1m, DateTime.Today);
 
+            contrato.calcularReconocimientos();
+            Console.WriteLine(String.Format("Ingreso reconocido para {0} a fecha de hoy: {1}",
+                contrato.getNombreProducto(), contrato.ingresoReconocido(DateTime.Today)));
+
+            contrato = new Contrato(hojaCalculo, 100.10m, new DateTime(2015, 4, 21));
             contrato.calcularReconocimientos();
             Console.WriteLine(String.Format("Ingreso reconocido para {0} a fecha de hoy: {1}",
                 contrato.getNombreProducto(), contrato.ingresoReconocido(DateTime.Today)));

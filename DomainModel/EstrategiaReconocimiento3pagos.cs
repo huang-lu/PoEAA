@@ -31,13 +31,14 @@ namespace DomainModel
         {
             decimal[] resultado = new decimal[3];
             decimal valorMinimo = ingresoTotal / nPartes;
-            decimal valorMaximo = valorMinimo + 1;
-            int resto = (int)ingresoTotal % nPartes;
+            valorMinimo = Decimal.Round(valorMinimo, 2);
+            decimal valorMaximo = valorMinimo + 0.01m;
+            int resto = (int) ingresoTotal % nPartes;
             for (int i = 0; i < resto; i++)
             {
                 resultado[i] = valorMaximo;
             }
-            for (int i = resto; i < resultado.Length; i++)
+            for (int i = resto; i < nPartes; i++)
             {
                 resultado[i] = valorMinimo;
             }

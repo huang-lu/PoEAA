@@ -10,6 +10,7 @@ namespace DomainModel
     {
         public override void calcularReconocimientoIngresos(Contrato contrato)
         {
+            decimal ingreso = Decimal.Round(contrato.getIngreso(), 2);
             contrato.anadirReconocimientoIngreso(new ReconocimientoIngreso(contrato.getIngreso(), contrato.getFechaFirma()));
         }
     }
