@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,25 +12,21 @@ namespace TableModule
 {
     class Program
     {
-        static SqlDataAdapter contratos;
-        static SqlDataAdapter productos;
-        static SqlDataAdapter reconocimientoIngreso;
+        static Hashtable dataAdapters = new Hashtable();
+        static SqlDataAdapter dataAdapter;
+
         static void Main(string[] args)
         {
-
             DataSet esquema = new DataSet();
+
             rellenar(esquema);
             imprimirDataSet(esquema, "ReconocimientoIngreso");
 
             Contrato contrato = new Contrato(esquema);
             Producto producto = new Producto(esquema);
-            contrato.calcularReconocimiento(1);
 
-            Console.WriteLine("{0}", producto[1]["Nombre"]);
-            producto[1]["Nombre"] = "Pepito";
+            contrato.calcularReconocimiento(1); // Producto con Id 1
             imprimirDataSet(esquema, "ReconocimientoIngreso");
-
-            rellenar(esquema);
             actualizarBD(esquema);
 
             Console.WriteLine("Pulse cualquier tecla para continuar...");
@@ -38,22 +35,19 @@ namespace TableModule
 
         private static void actualizarBD(DataSet esquema)
         {
-            SqlCommandBuilder cb = new SqlCommandBuilder(contratos);
+            actualizarTabla(esquema, "Contrato");
+            actualizarTabla(esquema, "Producto");
+            actualizarTabla(esquema, "ReconocimientoIngreso");
+        }
+
+        private static void actualizarTabla(DataSet esquema, string tabla)
+        {
+            SqlCommandBuilder cb;
             SqlConnection conexion = conectarBD();
 
-            contratos.Update(esquema, "Contrato");
-            contratos.UpdateCommand = cb.GetUpdateCommand(true);
-            contratos.InsertCommand = cb.GetInsertCommand(true);
-
-            cb = new SqlCommandBuilder(productos);
-            productos.UpdateCommand = cb.GetUpdateCommand(true);
-            productos.InsertCommand = cb.GetInsertCommand(true);
-            productos.Update(esquema, "Producto");
-
-            cb = new SqlCommandBuilder(reconocimientoIngreso);
-            reconocimientoIngreso.InsertCommand = cb.GetInsertCommand(true);
-            reconocimientoIngreso.UpdateCommand = cb.GetUpdateCommand(true);
-            reconocimientoIngreso.Update(esquema, "ReconocimientoIngreso");
+            dataAdapter = (SqlDataAdapter)dataAdapters[tabla];
+            cb = new SqlCommandBuilder(dataAdapter);
+            dataAdapter.Update(esquema, tabla);
         }
 
         private static void imprimirDataSet(DataSet esquema, string tabla)
@@ -61,27 +55,27 @@ namespace TableModule
             Console.WriteLine("ContratoId\tCantidad\tFecha");
             foreach (DataRow fila in esquema.Tables[tabla].Rows)
             {
-                Console.WriteLine(String.Format("{0}\t\t{1}\t\t{2}", fila["ContratoId"], 
+                Console.WriteLine(String.Format("{0}\t\t{1}\t\t{2}", fila["ContratoId"],
                     fila["Cantidad"], fila["FechaReconocimiento"]));
             }
         }
 
         private static void rellenar(DataSet esquema)
         {
+            rellenarTabla(esquema, "Contrato");
+            rellenarTabla(esquema, "Producto");
+            rellenarTabla(esquema, "ReconocimientoIngreso");
+        }
+
+        private static void rellenarTabla(DataSet esquema, string tabla)
+        {
             SqlConnection conexion = conectarBD();
+
             conexion.Open();
-            contratos = new SqlDataAdapter("SELECT * FROM Contrato", conexion);
-            productos = new SqlDataAdapter("SELECT * FROM Producto", conexion);
-            reconocimientoIngreso = new SqlDataAdapter("SELECT * FROM ReconocimientoIngreso", conexion);
-
-            contratos.FillSchema(esquema, SchemaType.Source, "Contrato");
-            contratos.Fill(esquema, "Contrato");
-
-            productos.FillSchema(esquema, SchemaType.Source, "Producto");
-            productos.Fill(esquema, "Producto");
-
-            reconocimientoIngreso.FillSchema(esquema, SchemaType.Source, "ReconocimientoIngreso");
-            reconocimientoIngreso.Fill(esquema, "ReconocimientoIngreso");
+            dataAdapter = new SqlDataAdapter(String.Format("SELECT * FROM {0}", tabla), conexion);
+            dataAdapter.FillSchema(esquema, SchemaType.Source, tabla);
+            dataAdapter.Fill(esquema, tabla);
+            dataAdapters.Add(tabla, dataAdapter);
             conexion.Close();
         }
 
