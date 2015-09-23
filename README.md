@@ -5,3 +5,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Transaction Script
 * Domain Model
 * Table Module
+* Table Data Gateway
