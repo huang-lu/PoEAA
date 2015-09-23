@@ -13,18 +13,18 @@ namespace TableModule
 
         public void insertar(int contratoId, decimal cantidad, DateTime fechaFirma)
         {
-            DataRow nuevaFila = table.NewRow();
+            DataRow nuevaFila = tabla.NewRow();
             nuevaFila["ContratoId"] = contratoId;
             nuevaFila["Cantidad"] = cantidad;
             nuevaFila["FechaReconocimiento"] = fechaFirma;
-            table.Rows.Add(nuevaFila);
+            tabla.Rows.Add(nuevaFila);
         }
 
         public decimal ingresoReconocido(int contratoId, DateTime fecha)
         {
             string filtro = String.Format("ContratoId = {0} AND FechaReconocimiento <= #{1:d}#",
                 contratoId, fecha);
-            DataRow[] filas = table.Select(filtro);
+            DataRow[] filas = tabla.Select(filtro);
             decimal resultado = 0m;
             foreach (DataRow fila in filas)
             {

@@ -20,13 +20,18 @@ namespace TableModule
             DataSet esquema = new DataSet();
 
             rellenar(esquema);
-            imprimirDataSet(esquema, "ReconocimientoIngreso");
 
             Contrato contrato = new Contrato(esquema);
             Producto producto = new Producto(esquema);
 
-            contrato.calcularReconocimiento(1); // Producto con Id 1
-            imprimirDataSet(esquema, "ReconocimientoIngreso");
+            imprimirTabla(esquema, "Contrato");
+            contrato.insertar(4, 2, 350m, DateTime.Today);
+            imprimirTabla(esquema, "Contrato");
+
+            imprimirTabla(esquema, "ReconocimientoIngreso");
+            contrato.calcularReconocimiento(4);            
+            imprimirTabla(esquema, "ReconocimientoIngreso");
+
             actualizarBD(esquema);
 
             Console.WriteLine("Pulse cualquier tecla para continuar...");
@@ -50,14 +55,17 @@ namespace TableModule
             dataAdapter.Update(esquema, tabla);
         }
 
-        private static void imprimirDataSet(DataSet esquema, string tabla)
+        private static void imprimirTabla(DataSet esquema, string tabla)
         {
-            Console.WriteLine("ContratoId\tCantidad\tFecha");
             foreach (DataRow fila in esquema.Tables[tabla].Rows)
             {
-                Console.WriteLine(String.Format("{0}\t\t{1}\t\t{2}", fila["ContratoId"],
-                    fila["Cantidad"], fila["FechaReconocimiento"]));
+                foreach (var campo in fila.ItemArray)
+                {
+                    Console.Write("{0}\t", campo);
+                }
+                Console.WriteLine("");
             }
+            Console.WriteLine("");
         }
 
         private static void rellenar(DataSet esquema)

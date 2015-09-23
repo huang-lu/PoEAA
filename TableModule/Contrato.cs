@@ -16,16 +16,26 @@ namespace TableModule
             get
             {
                 string filter = String.Format("ContratoId = {0}", key);
-                return table.Select(filter)[0];
+                return tabla.Select(filter)[0];
             }
+        }
+
+        public void insertar(int contradoId, int productoId, decimal ingreso, DateTime fecha)
+        {
+            DataRow fila = tabla.NewRow();
+            fila["ContratoId"] = contradoId;
+            fila["ProductoId"] = productoId;
+            fila["Ingreso"] = ingreso;
+            fila["Fecha"] = fecha;
+            tabla.Rows.Add(fila);
         }
 
         public void calcularReconocimiento(int contratoID)
         {
             DataRow filaContrato = this[contratoID];
             decimal ingreso = (decimal)filaContrato["Ingreso"];
-            ReconocimientoIngreso reconocimientoIngreso = new ReconocimientoIngreso(table.DataSet);
-            Producto producto = new Producto(table.DataSet);
+            ReconocimientoIngreso reconocimientoIngreso = new ReconocimientoIngreso(tabla.DataSet);
+            Producto producto = new Producto(tabla.DataSet);
             int productoId = getProductoId(contratoID);
             if (producto.getTipoProducto(productoId) == TipoProducto.W)
             {

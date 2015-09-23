@@ -18,7 +18,7 @@ namespace TableModule
             get
             {
                 string filter = String.Format("ProductoId = {0}", key);
-                return table.Select(filter)[0];
+                return tabla.Select(filter)[0];
             }
         }
 

@@ -9,10 +9,10 @@ namespace TableModule
 {
     class TableModule
     {
-        protected DataTable table;
+        protected DataTable tabla;
         protected TableModule(DataSet esquema, string nombreTabla)
         {
-            table = esquema.Tables[nombreTabla];
+            tabla = esquema.Tables[nombreTabla];
         }
     }
 }
