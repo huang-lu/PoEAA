@@ -20,3 +20,11 @@ CREATE TABLE [dbo].[ReconocimientoIngreso] (
     [FechaReconocimiento]   DECIMAL NOT NULL,
     CONSTRAINT [PK_dbo.ReconocimientoIngreso] PRIMARY KEY CLUSTERED ([ContratoId], [FechaReconocimiento] ASC)
 );
+
+CREATE TABLE [dbo].[Persona] (
+    [PersonaId]          INT            NOT NULL,
+    [Nombre]             NVARCHAR (200) NULL,
+    [Apellidos]          NVARCHAR (200) NULL,
+    [numeroDependientes] INT            NULL,
+    PRIMARY KEY CLUSTERED ([PersonaId] ASC)
+);
