@@ -9,3 +9,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Table Module
 * Table Data Gateway
 * Row Data Gateway
+* Active Record

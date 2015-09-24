@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableDataGateway", "TableDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RowDataGateway", "RowDataGateway\RowDataGateway.csproj", "{8A9F691C-9E0E-46D8-8AA6-867C8D10F499}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveRecord", "ActiveRecord\ActiveRecord.csproj", "{F61DF254-351B-49CA-B285-08A9478C7F64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{8A9F691C-9E0E-46D8-8AA6-867C8D10F499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A9F691C-9E0E-46D8-8AA6-867C8D10F499}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A9F691C-9E0E-46D8-8AA6-867C8D10F499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F61DF254-351B-49CA-B285-08A9478C7F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F61DF254-351B-49CA-B285-08A9478C7F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F61DF254-351B-49CA-B285-08A9478C7F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F61DF254-351B-49CA-B285-08A9478C7F64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
