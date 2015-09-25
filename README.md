@@ -10,3 +10,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Table Data Gateway
 * Row Data Gateway
 * Active Record
+* Data Mapper (using Identity Mapper pattern)
