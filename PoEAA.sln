@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveRecord", "ActiveRecor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataMapper", "DataMapper\DataMapper.csproj", "{EC4FA29D-94C0-498E-896E-23DF680304F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitfOfWork", "UnifOfWork\UnitfOfWork.csproj", "{7DCA8018-B61C-43A0-BD01-C73646769A4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{EC4FA29D-94C0-498E-896E-23DF680304F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4FA29D-94C0-498E-896E-23DF680304F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC4FA29D-94C0-498E-896E-23DF680304F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DCA8018-B61C-43A0-BD01-C73646769A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DCA8018-B61C-43A0-BD01-C73646769A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DCA8018-B61C-43A0-BD01-C73646769A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DCA8018-B61C-43A0-BD01-C73646769A4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,3 +28,9 @@ CREATE TABLE [dbo].[Persona] (
     [numeroDependientes] INT            NULL,
     PRIMARY KEY CLUSTERED ([PersonaId] ASC)
 );
+
+CREATE TABLE [dbo].[Album]
+(
+	[AlbumId] INT NOT NULL PRIMARY KEY, 
+    [Titulo] NVARCHAR(200) NULL
+)
