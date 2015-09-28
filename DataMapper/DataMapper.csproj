@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consulta.cs" />
     <Compile Include="MapperAbstracto.cs" />
     <Compile Include="ObjetoDominio.cs" />
     <Compile Include="Persona.cs" />

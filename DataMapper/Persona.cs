@@ -19,17 +19,21 @@ namespace DataMapper
             {
                 return nombre;
             }
+        }
 
-            set
+        public string Apellidos
+        {
+            get
             {
-                nombre = value;
+                return apellidos;
             }
         }
+                
 
         public Persona(int id, string nombre, string apellidos, int numeroDependientes)
         {
             this.PersonaId = id;
-            this.Nombre = nombre;
+            this.nombre = nombre;
             this.apellidos = apellidos;
             this.numeroDependendientes = numeroDependientes;
         }

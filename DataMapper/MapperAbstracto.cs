@@ -26,11 +26,23 @@ namespace DataMapper
             consulta.Connection.Open();
             SqlDataReader fila = consulta.ExecuteReader();
             fila.Read();
-            resultado = load(fila);
+            resultado = cargar(fila);
             return resultado;
         }
 
-        protected ObjetoDominio load(SqlDataReader fila)
+        public ArrayList BuscarCualquier(Consulta consulta)
+        {
+            SqlCommand consul = new SqlCommand(consulta.Sql(), BD());
+            foreach (var parametro in consulta.Parametros().Keys)
+            {
+                consul.Parameters.AddWithValue(parametro.ToString(), consulta.Parametros()[parametro]);
+            }
+            consul.Connection.Open();
+            SqlDataReader resultado = consul.ExecuteReader();
+            return cargarTodos(resultado);
+        }
+
+        protected ObjetoDominio cargar(SqlDataReader fila)
         {
             int id = fila.GetInt32(0);
             if (objetosCargados.ContainsKey(id))
@@ -42,6 +54,16 @@ namespace DataMapper
             return resultado;
         }
         abstract protected ObjetoDominio hacerCarga(int id, SqlDataReader fila);
+
+        protected ArrayList cargarTodos(SqlDataReader filas)
+        {
+            ArrayList resultado = new ArrayList();
+            while (filas.Read())
+            {
+                resultado.Add(cargar(filas));
+            }
+            return resultado;
+        }
 
         private SqlConnection BD()
         {
