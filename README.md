@@ -11,4 +11,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Row Data Gateway
 * Active Record
 * Data Mapper (using Identity Mapper pattern)
-* Unit of Work (using Data Mapper pattern)
+* Unit of Work (using Data Mapper pattern with Identity Map)

@@ -15,7 +15,7 @@ namespace UnitOfWork
         private ArrayList objetosModificados = new ArrayList();
         private ArrayList objetosEliminados = new ArrayList();
         private static LocalDataStoreSlot hilo = Thread.AllocateNamedDataSlot("hilo");
-        
+
         public void registrarNuevo(ObjetoDominio objeto)
         {
             Debug.Assert(objeto.getId() != 0, "Id no nula");
@@ -67,7 +67,7 @@ namespace UnitOfWork
         {
             foreach (ObjetoDominio objeto in objetosNuevos)
             {
-                RegistroMapper.getMapper(objeto.GetType()).insertar();
+                RegistroMapper.getMapper(objeto.GetType()).insertar(objeto);
             }
         }
 
@@ -75,7 +75,7 @@ namespace UnitOfWork
         {
             foreach (ObjetoDominio objeto in objetosModificados)
             {
-                RegistroMapper.getMapper(objeto.GetType()).actualizar();
+                RegistroMapper.getMapper(objeto.GetType()).actualizar(objeto);
             }
         }
 
@@ -83,7 +83,7 @@ namespace UnitOfWork
         {
             foreach (ObjetoDominio objeto in objetosEliminados)
             {
-                RegistroMapper.getMapper(objeto.GetType()).eliminar();
+                RegistroMapper.getMapper(objeto.GetType()).eliminar(objeto.getId());
             }
         }
 
