@@ -66,11 +66,18 @@ namespace UnitOfWork
 
         protected void actualizarAbstracto(ObjetoDominio objeto)
         {
-            SqlCommand consulta = new SqlCommand(cadenaActualizar(), BD());
-            agregarParametros(consulta, objeto);
-            consulta.Connection.Open();
-            consulta.ExecuteNonQuery();
-            consulta.Connection.Close();
+            try
+            {
+                SqlCommand consulta = new SqlCommand(cadenaActualizar(), BD());
+                agregarParametros(consulta, objeto);
+                consulta.Connection.Open();
+                consulta.ExecuteNonQuery();
+                consulta.Connection.Close();
+            }
+            catch (SqlException)
+            {
+                Console.WriteLine("Hubo un error al actualizar el registro {0}", objeto.getId());
+            }
         }
 
         abstract protected void agregarParametros(SqlCommand consulta, ObjetoDominio objeto);
@@ -79,22 +86,36 @@ namespace UnitOfWork
 
         protected void insertarAbstracto(ObjetoDominio objeto)
         {
-            SqlCommand consulta = new SqlCommand(cadenaInsertar(), BD());
-            agregarParametros(consulta, objeto);
-            consulta.Connection.Open();
-            consulta.ExecuteNonQuery();
-            consulta.Connection.Close();
+            try
+            {
+                SqlCommand consulta = new SqlCommand(cadenaInsertar(), BD());
+                agregarParametros(consulta, objeto);
+                consulta.Connection.Open();
+                consulta.ExecuteNonQuery();
+                consulta.Connection.Close();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Hubo un error al insertar el registro {0}.", objeto.getId());
+            }
         }
 
         abstract public void eliminar(int id);
 
         protected void eliminarAbstracto(int id)
         {
-            SqlCommand consulta = new SqlCommand(cadenaEliminar(), BD());
-            agregarParametro(consulta, id);
-            consulta.Connection.Open();
-            consulta.ExecuteNonQuery();
-            consulta.Connection.Close();
+            try
+            {
+                SqlCommand consulta = new SqlCommand(cadenaEliminar(), BD());
+                agregarParametro(consulta, id);
+                consulta.Connection.Open();
+                consulta.ExecuteNonQuery();
+                consulta.Connection.Close();
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Hubo un error al eliminar el registro {0}", id);
+            }
         }
 
         abstract protected void agregarParametro(SqlCommand consulta, int id);

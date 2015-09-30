@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Threading;
+using System.Transactions;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -58,9 +59,14 @@ namespace UnitOfWork
 
         public void commit()
         {
-            insertarNuevo();
-            actualizarModificados();
-            borrarEliminados();
+            using (TransactionScope transaccion = new TransactionScope())
+            {
+                insertarNuevo();
+                actualizarModificados();
+                borrarEliminados();
+
+                transaccion.Complete();
+            }
         }
 
         private void insertarNuevo()
