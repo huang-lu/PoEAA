@@ -94,7 +94,7 @@ namespace UnitOfWork
                 consulta.ExecuteNonQuery();
                 consulta.Connection.Close();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Hubo un error al insertar el registro {0}.", objeto.getId());
             }
@@ -112,7 +112,7 @@ namespace UnitOfWork
                 consulta.ExecuteNonQuery();
                 consulta.Connection.Close();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
                 Console.WriteLine("Hubo un error al eliminar el registro {0}", id);
             }
