@@ -29,8 +29,16 @@ CREATE TABLE [dbo].[Persona] (
     PRIMARY KEY CLUSTERED ([PersonaId] ASC)
 );
 
-CREATE TABLE [dbo].[Album]
+CREATE TABLE [dbo].[Album] (
+    [AlbumId]   INT            NOT NULL,
+    [ArtistaId] INT            NOT NULL,
+    [Titulo]    NVARCHAR (200) NULL,
+    PRIMARY KEY CLUSTERED ([AlbumId] ASC),
+    CONSTRAINT [fk_ArtistaAlbum] FOREIGN KEY ([ArtistaId]) REFERENCES [dbo].[Artista] ([ArtistaId])
+);
+
+CREATE TABLE [dbo].[Artista]
 (
-	[AlbumId] INT NOT NULL PRIMARY KEY, 
-    [Titulo] NVARCHAR(200) NULL
-)
+	[ArtistaId] INT NOT NULL PRIMARY KEY, 
+    [Nombre] NVARCHAR(200) NULL
+);
