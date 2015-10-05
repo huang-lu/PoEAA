@@ -13,3 +13,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Active Record
 * Data Mapper (using Identity Mapper pattern)
 * Unit of Work (using Data Mapper pattern with Identity Map)
+* Identity Field (using Data Mapper pattern)
