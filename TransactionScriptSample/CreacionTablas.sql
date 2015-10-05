@@ -63,3 +63,11 @@ CREATE TABLE [dbo].[HabilidadesEmpleados]
 	FOREIGN KEY ([EmpleadoId]) REFERENCES [dbo].[Empleado] ([EmpleadoId]),
 	FOREIGN KEY ([HabilidadId]) REFERENCES [dbo].[Habilidad] ([HabilidadId]),
 );
+
+CREATE TABLE [dbo].[Cancion] (
+    [CancionId] INT            NOT NULL,
+	[AlbumId] INT NOT NULL,
+    [Titulo]    NVARCHAR (200) NULL,
+    PRIMARY KEY CLUSTERED ([CancionId] ASC),
+	FOREIGN KEY ([AlbumId]) REFERENCES [dbo].[Album] ([AlbumId])
+);
