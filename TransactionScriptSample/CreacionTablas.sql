@@ -42,3 +42,24 @@ CREATE TABLE [dbo].[Artista]
 	[ArtistaId] INT NOT NULL PRIMARY KEY, 
     [Nombre] NVARCHAR(200) NULL
 );
+
+CREATE TABLE [dbo].[Empleado]
+(
+	[EmpleadoId] INT NOT NULL PRIMARY KEY, 
+    [Nombre] NVARCHAR(200) NULL
+);
+
+CREATE TABLE [dbo].[Habilidad]
+(
+	[HabilidadId] INT NOT NULL PRIMARY KEY, 
+    [Nombre] NVARCHAR(200) NULL
+);
+
+CREATE TABLE [dbo].[HabilidadesEmpleados]
+(
+	[EmpleadoId] INT NOT NULL , 
+    [HabilidadId] INT NOT NULL, 
+    PRIMARY KEY ([EmpleadoId],[HabilidadId]),
+	FOREIGN KEY ([EmpleadoId]) REFERENCES [dbo].[Empleado] ([EmpleadoId]),
+	FOREIGN KEY ([HabilidadId]) REFERENCES [dbo].[Habilidad] ([HabilidadId]),
+);

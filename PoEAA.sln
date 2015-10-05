@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityField", "IdentityFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForeignKeyMapping", "ForeignKeyMapping\ForeignKeyMapping.csproj", "{C3D620F2-AA1A-4A9C-ABEF-44D8873AEFCD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssociationTableMapping", "AssociationTableMapping\AssociationTableMapping.csproj", "{452BD8C7-AA3B-449A-8E98-1B61E1DC0DE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{C3D620F2-AA1A-4A9C-ABEF-44D8873AEFCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3D620F2-AA1A-4A9C-ABEF-44D8873AEFCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3D620F2-AA1A-4A9C-ABEF-44D8873AEFCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{452BD8C7-AA3B-449A-8E98-1B61E1DC0DE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{452BD8C7-AA3B-449A-8E98-1B61E1DC0DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452BD8C7-AA3B-449A-8E98-1B61E1DC0DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{452BD8C7-AA3B-449A-8E98-1B61E1DC0DE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
