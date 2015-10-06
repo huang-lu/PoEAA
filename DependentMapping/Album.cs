@@ -22,6 +22,10 @@ namespace DependentMapping
         {
             return titulo;
         }
+        public void setTitulo(string titulo)
+        {
+            this.titulo = titulo;
+        }
         public void AnadirCancion(Cancion cancion)
         {
             canciones.Add(cancion);

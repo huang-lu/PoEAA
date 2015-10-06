@@ -13,10 +13,13 @@ namespace DependentMapping
             AlbumMapper albumMap = new AlbumMapper();
             Album album = (Album)albumMap.Buscar(2);
             Cancion[] canciones = album.getCanciones();
-            Console.WriteLine(album.getTitulo());
-            foreach (Cancion c in canciones)
+            album.setTitulo(album.getTitulo() + ".");
+            album.EliminarCancion(2);            
+            albumMap.Actualizar(album);
+            Console.WriteLine("{0} {1}", album.id, album.getTitulo());
+            foreach (Cancion c in album.getCanciones())
             {
-                Console.WriteLine("\t{0}", c.getTitulo());
+                Console.WriteLine("\t{0}. {1}", c.id, c.getTitulo());
             }
 
             Console.WriteLine("Pulse cualquier tecla para continuar...");

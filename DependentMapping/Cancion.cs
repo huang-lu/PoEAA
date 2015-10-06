@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DependentMapping
 {
-    class Cancion
+    class Cancion : ObjetoDominio
     {
         private readonly string titulo;
 
