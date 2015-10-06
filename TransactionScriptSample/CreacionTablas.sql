@@ -71,3 +71,13 @@ CREATE TABLE [dbo].[Cancion] (
     PRIMARY KEY CLUSTERED ([CancionId] ASC),
 	FOREIGN KEY ([AlbumId]) REFERENCES [dbo].[Album] ([AlbumId])
 );
+
+CREATE TABLE [dbo].[Jugador]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Nombre] NVARCHAR(200) NULL, 
+    [Club] NVARCHAR(200) NULL, 
+    [MediaBateo] INT NULL, 
+    [MediaBowling] INT NULL, 
+    [Tipo] CHAR NULL
+);

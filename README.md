@@ -17,3 +17,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Foreign Key Mapping (using Identity Mapper)
 * Association Table Mapping (using Data Mapper & Identity Mapper)
 * Dependent Mapping
+* Single Table Inheritance (using Inheritance Mapper)
