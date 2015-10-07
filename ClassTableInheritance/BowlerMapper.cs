@@ -9,7 +9,7 @@ namespace ClassTableInheritance
 {
     class BowlerMapper : CricketerMapper
     {
-        public const string TIPO = "B";
+        new public const string TIPO = "B";
         public override string Tipo
         {
             get { return TIPO; }
@@ -18,7 +18,7 @@ namespace ClassTableInheritance
 
         public BowlerMapper(Gateway gateway) : base(gateway) { }
         
-        public Bowler Buscar(long id)
+        new public Bowler Buscar(long id)
         {
             return (Bowler)base.BuscarAbstracto(id, NombreTabla);
         }

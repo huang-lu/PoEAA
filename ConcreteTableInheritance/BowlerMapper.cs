@@ -5,29 +5,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SingleTableInheritance
+namespace ConcreteTableInheritance
 {
     class BowlerMapper : CricketerMapper
     {
-        new public const string TIPO = "B";
+        public BowlerMapper(Gateway gatW) : base(gatW) { }
 
-        public BowlerMapper(Gateway gateway) : base(gateway) { }
-
-        public override string Tipo
+        public override string NombreTabla
         {
-            get { return TIPO; }
+            get
+            {
+                return "Bowler";
+            }
         }
 
         new public Bowler Buscar(long id)
         {
-            return (Bowler)base.Buscar(id);
+            return (Bowler)BuscarAbstracto(id);
         }
 
         protected override void Cargar(ObjetoDominio objeto, DataRow fila)
         {
             base.Cargar(objeto, fila);
-            Bowler bowler = (Bowler)objeto;
-            bowler.mediaBowling = (int)fila["MediaBowling"];
+            Bowler cricketer = (Bowler)objeto;
+            cricketer.mediaBowling = (int)fila["MediaBowling"];
         }
 
         protected override void Guardar(ObjetoDominio objeto, DataRow fila)
@@ -35,6 +36,7 @@ namespace SingleTableInheritance
             base.Guardar(objeto, fila);
             Bowler bowler = (Bowler)objeto;
             fila["MediaBowling"] = bowler.mediaBowling;
+            gateway.guardarABd(NombreTabla);
         }
 
         protected override ObjetoDominio CrearObjetoDominio()
