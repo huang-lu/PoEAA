@@ -81,3 +81,21 @@ CREATE TABLE [dbo].[Jugador]
     [MediaBowling] INT NULL, 
     [Tipo] CHAR NULL
 );
+
+CREATE TABLE [dbo].[Futbolista]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [Club] NVARCHAR(200) NULL
+);
+
+CREATE TABLE [dbo].[Cricketer]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [MediaBateo] INT NULL
+);
+
+CREATE TABLE [dbo].[Bowler]
+(
+	[Id] INT NOT NULL PRIMARY KEY, 
+    [MediaBowling] INT NULL
+);

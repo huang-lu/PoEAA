@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependentMapping", "Depende
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SingleTableInheritance", "SingleTableInheritance\SingleTableInheritance.csproj", "{A4902363-BBF5-45FF-B82D-411DA93C17A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassTableInheritance", "ClassTableInheritance\ClassTableInheritance.csproj", "{658283DD-875C-4269-9249-D62E1F1B639A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{A4902363-BBF5-45FF-B82D-411DA93C17A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4902363-BBF5-45FF-B82D-411DA93C17A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4902363-BBF5-45FF-B82D-411DA93C17A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658283DD-875C-4269-9249-D62E1F1B639A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658283DD-875C-4269-9249-D62E1F1B639A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658283DD-875C-4269-9249-D62E1F1B639A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658283DD-875C-4269-9249-D62E1F1B639A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
