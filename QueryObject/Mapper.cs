@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetadataMapping
+namespace QueryObject
 {
     abstract class Mapper
     {
@@ -36,7 +37,33 @@ namespace MetadataMapping
             return resultado;
         }
 
+        public IList BuscarObjetoWhere(string clausulaWhere)
+        {
+            string sql = "SELECT " + GetColumnaId() + dataMap.GetListaColumnas() + " FROM " + dataMap.GetNombreTabla() +
+                " WHERE " + clausulaWhere;
+            SqlCommand consulta = new SqlCommand(sql, BD());
+            consulta.Connection.Open();
+            SqlDataReader filas = consulta.ExecuteReader();
+            if (!filas.HasRows)
+            {
+                return null;
+            }
+            IList resultado = CargarTodo(filas);
+            consulta.Connection.Close();
+            return resultado;
+        }
+
         protected abstract string GetColumnaId();
+
+        private IList CargarTodo(SqlDataReader filas)
+        {
+            IList resultado = new ArrayList();
+            while (filas.Read())
+            {
+                resultado.Add(Cargar(filas));
+            }
+            return resultado;
+        }
 
         private ObjetoDominio Cargar(SqlDataReader fila)
         {
@@ -116,7 +143,21 @@ namespace MetadataMapping
             {
                 throw new ApplicationException("Imposible eliminar la fila de la tabla");
             }
-        }       
+        }
+
+        public DataMap GetDataMap()
+        {
+            return dataMap;
+        }
+
+        public static Mapper GetMapper(Type tipo)
+        {
+            if (tipo.Equals(typeof(Persona)))
+            {
+                return new PersonaMapper();
+            }
+            return null;
+        }
 
         private SqlConnection BD()
         {

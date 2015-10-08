@@ -21,3 +21,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Class Table Inheritance (using Inheritance Mapper)
 * Concrete Table Inheritance (using Inheritance Mapper)
 * Metadata Mapping
+* Query Object
