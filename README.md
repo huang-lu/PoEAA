@@ -22,3 +22,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Concrete Table Inheritance (using Inheritance Mapper)
 * Metadata Mapping
 * Query Object
+* Repository
