@@ -12,14 +12,21 @@ namespace Registry
         {
             Persona persona = Persona.Buscar(7);
 
-            Console.WriteLine(persona.Nombre);
+            if (persona != null)
+            {
+                Console.WriteLine(persona.Nombre);
 
-            persona.Nombre = "Paco";
-            Console.WriteLine(persona.Nombre);
-            persona.Actualizar();
+                persona.Nombre = "Paco";
+                Console.WriteLine(persona.Nombre);
+                persona.Actualizar();
 
-            Console.WriteLine("La desgravación es {0} porque tiene a su cargo {1} personas",
-                                persona.getDesgravacion(), persona.NumeroDependientes);
+                Console.WriteLine("La desgravación es {0} porque tiene a su cargo {1} personas",
+                                    persona.getDesgravacion(), persona.NumeroDependientes);
+            }
+            else
+            {
+                Console.WriteLine("No se ha encontrado a ninguna persona con ese ID.");
+            }
             
 
             Console.WriteLine("Pulse cualquier tecla para continuar...");

@@ -97,9 +97,17 @@ namespace Registry
                 consulta.Parameters.AddWithValue("@id", id);
                 consulta.Connection.Open();
                 SqlDataReader fila = consulta.ExecuteReader();
-                fila.Read();
-                resultado = Load(fila);
-                return resultado;
+                if (fila.HasRows)
+                {
+                    fila.Read();
+                    resultado = Load(fila);
+                    return resultado;
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
             catch (SqlException)
             {
