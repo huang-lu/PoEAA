@@ -23,3 +23,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Metadata Mapping
 * Query Object
 * Repository
+* Registry (using Active Record)
