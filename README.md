@@ -24,3 +24,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Query Object
 * Repository
 * Registry (using Active Record)
+* Identity Map
