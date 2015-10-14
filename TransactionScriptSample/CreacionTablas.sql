@@ -99,3 +99,13 @@ CREATE TABLE [dbo].[Bowler]
 	[Id] INT NOT NULL PRIMARY KEY, 
     [MediaBowling] INT NULL
 );
+
+CREATE TABLE [dbo].[Empleados]
+(
+	[EmpleadoId] INT NOT NULL PRIMARY KEY, 
+    [Nombre] NVARCHAR(200) NULL, 
+    [Fecha_Inicial] DATE NULL, 
+    [Fecha_Final] DATE NULL, 
+    [Salario] FLOAT NULL, 
+    [Moneda] NCHAR(10) NULL
+);

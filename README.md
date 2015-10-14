@@ -25,3 +25,4 @@ Pattern samples extracted from Fowler's PoEAA
 * Repository
 * Registry (using Active Record)
 * Identity Map
+* Embedded Value
